@@ -2,7 +2,36 @@
 
 const PhoneCard = ({ phoneCard }) => {
   // console.log(phoneCard)
-  const { image, phone_name, brand_name } = phoneCard || {};
+  const { id, image, phone_name, brand_name } = phoneCard || {};
+
+  const handlePhoneFeatured = () => {
+    // console.log(phoneCard)
+
+    const addFeaturedItem = [];
+
+    const featuredItem = JSON.parse(localStorage.getItem('featured'));
+
+    if(!featuredItem){
+        addFeaturedItem.push(phoneCard);
+        localStorage.setItem('featured', JSON.stringify(addFeaturedItem));
+        alert('Product Added');
+    }
+    else{
+
+        const isExits = featuredItem?.find(phonecard => phonecard.id === id);
+
+        if(!isExits){
+            addFeaturedItem.push(...featuredItem, phoneCard)
+            localStorage.setItem('featured', JSON.stringify(addFeaturedItem));
+            alert('Product Added');
+        }
+        else{
+            alert('already added')
+        }
+
+    }
+  }
+
   return (
     <div className="flex justify-center items-center h-[70vh]">
       <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md items-center">
@@ -23,10 +52,11 @@ const PhoneCard = ({ phoneCard }) => {
           
           <a className="inline-block" href="#">
             <button
+            onClick={handlePhoneFeatured}
               className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
-              Add to Favorites
+              Add to Featured
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
