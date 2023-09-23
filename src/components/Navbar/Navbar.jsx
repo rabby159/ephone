@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 /* eslint-disable react/no-unescaped-entities */
 const Navbar = () => {
@@ -6,26 +6,42 @@ const Navbar = () => {
     <div>
       <nav className="sticky inset-0 z-10 block h-max w-full max-w-full rounded-none border border-white/80 bg-white bg-opacity-80 py-2 px-4 text-white shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4">
         <div className="flex items-center text-gray-900 container mx-auto">
-          <h2
-            className="mr-4 block cursor-pointer py-1.5 font-sans text-2xl font-bold leading-relaxed text-inherit antialiased"
-          >
+          <h2 className="mr-4 block cursor-pointer py-1.5 font-sans text-2xl font-bold leading-relaxed text-inherit antialiased">
             ePhone
           </h2>
           <ul className="ml-auto mr-8 hidden items-center gap-6 lg:flex">
             <li className="block p-1 font-sans text-xl font-semibold leading-normal text-inherit antialiased">
-              <Link className="flex items-center">
+              <NavLink
+                to="/"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "bg-slate-500 rounded-md p-1 text-white" : ""
+                }
+              >
                 Home
-              </Link>
+              </NavLink>
+              
             </li>
             <li className="block p-1 font-sans text-xl font-semibold leading-normal text-inherit antialiased">
-              <Link className="flex items-center" >
+              <NavLink
+                to="/features"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "bg-slate-500 rounded-md p-2 text-white" : ""
+                }
+              >
                 Featured
-              </Link>
+              </NavLink>
+              
             </li>
             <li className="block p-1 font-sans text-xl font-semibold leading-normal text-inherit antialiased">
-              <Link className="flex items-center">
+              <NavLink
+                to="/login"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "bg-slate-500 rounded-md p-2 text-white" : ""
+                }
+              >
                 Login
-              </Link>
+              </NavLink>
+              
             </li>
           </ul>
           <button
