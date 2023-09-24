@@ -71,24 +71,34 @@ const Navbar = () => {
         >
           <ul className="mt-2 mb-4 flex flex-col gap-2 pb-2">
             <li className="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-              <a className="flex items-center" href="#">
-                Pages
-              </a>
+            <NavLink
+                to="/"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "bg-slate-500 rounded-md p-1 text-white" : ""
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li className="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-              <a className="flex items-center" href="#">
-                Account
-              </a>
+            <NavLink
+                to="/features"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "bg-slate-500 rounded-md p-2 text-white" : ""
+                }
+              >
+                Featured
+              </NavLink>
             </li>
             <li className="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-              <a className="flex items-center" href="#">
-                Blocks
-              </a>
-            </li>
-            <li className="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-              <a className="flex items-center" href="#">
-                Docs
-              </a>
+            <NavLink
+                to="/login"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "bg-slate-500 rounded-md p-2 text-white" : ""
+                }
+              >
+                Login
+              </NavLink>
             </li>
           </ul>
         </div>

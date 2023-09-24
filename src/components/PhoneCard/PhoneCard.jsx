@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import swal from "sweetalert";
+
 const PhoneCard = ({ phoneCard }) => {
   // console.log(phoneCard)
   const { id, image, phone_name, brand_name } = phoneCard || {};
@@ -14,7 +16,7 @@ const PhoneCard = ({ phoneCard }) => {
     if(!featuredItem){
         addFeaturedItem.push(phoneCard);
         localStorage.setItem('featured', JSON.stringify(addFeaturedItem));
-        alert('Product Added');
+        swal("Good job!", "Product Added Successfully!", "success");
     }
     else{
 
@@ -23,10 +25,10 @@ const PhoneCard = ({ phoneCard }) => {
         if(!isExits){
             addFeaturedItem.push(...featuredItem, phoneCard)
             localStorage.setItem('featured', JSON.stringify(addFeaturedItem));
-            alert('Product Added');
+            swal("Good job!", "Product Added Successfully!", "success");
         }
         else{
-            alert('already added')
+            swal("Error!", "Already Added!", "error");
         }
 
     }
